@@ -6,11 +6,13 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-let oldPlayerRouter = require('./routes/oldPlayer.route')
+let oldPlayerRouter = require('./routes/oldPlayer.route');
+let newPlayer = require('./routes/newPlayer.route')
 
 //script
 
-let getNewPlayer = require('./scripts/getNewPlayers-Teams')
+let getNewPlayer = require('./scripts/getNewPlayers-Teams');
+let getLatest =require('./scripts/getLatest')
 
 
 let mongoose = require('mongoose')
@@ -31,7 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api/oldplayer', oldPlayerRouter )
+app.use('/api/oldplayer', oldPlayerRouter );
+app.use('/api/newPlayer', newPlayer)
 // app.use('/api/competitions', compeRouter)
 
 
@@ -45,6 +48,7 @@ mongoose.connect(process.env.localDb,  { useNewUrlParser: true }, function(err, 
 })
 //get player data
 //getNewPlayer.makeRequest();
+//getLatest.makeRequest();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
