@@ -14,6 +14,7 @@ let newPlayer = new Schema({
     teamName: String,
     pointsTotal: Number,
     pointsWeek: Number,
+    pointsLastWeek: Number,
     address: String,
     team_code: Number,
     position: Number,

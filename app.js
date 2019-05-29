@@ -40,7 +40,7 @@ app.use('/api/newPlayer', newPlayer)
 
 //conect mongoose
 
-mongoose.connect(process.env.localDb,  { useNewUrlParser: true }, function(err, db){
+mongoose.connect(process.env.remoteDb,  { useNewUrlParser: true }, function(err, db){
   if(err) throw err
   console.log("connected to remote db");
   database=db
@@ -48,7 +48,7 @@ mongoose.connect(process.env.localDb,  { useNewUrlParser: true }, function(err, 
 })
 //get player data
 //getNewPlayer.makeRequest();
-//getLatest.makeRequest();
+getLatest.makeRequest();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

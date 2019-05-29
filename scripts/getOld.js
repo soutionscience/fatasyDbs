@@ -1,5 +1,5 @@
 const request = require('request');
-let Player = require('../models/newPlayer');
+let Player = require('../models/oldPlayer');
 let Team = require('../models/teams');
 let playerController = require('../controllers/newPlayer.controller')
 
@@ -24,7 +24,7 @@ let playerController = require('../controllers/newPlayer.controller')
 
 
 exports.makeRequest =()=>{
-request('https://fantasy.premierleague.com/drf/bootstrap-static',  function (error, response, body) {
+    request('https://fantasy.premierleague.com/drf/bootstrap-static',  function (error, response, body) {
   if (!error && response.statusCode == 200) {
     let myresp = JSON.parse(body)
     //console.log(myresp.elements[0].web_name) // Print the google web page.
@@ -46,8 +46,7 @@ request('https://fantasy.premierleague.com/drf/bootstrap-static',  function (err
                            "player_code": element[i].code,
                            "now_cost": element[i].now_cost,
                            "pointsTotal":element[i].total_points,
-                           "pointsWeek": addRandomPoints(element[i].event_points),
-                           "pointsLastWeek": element[i].event_points,
+                           "pointsWeek": element[i].event_points,
                             "team": element[i].team,
                             "team_code": element[i].team_code,
                              "position": element[i].element_type,
@@ -101,13 +100,6 @@ request('https://fantasy.premierleague.com/drf/bootstrap-static',  function (err
 
 }
 
-function addRandomPoints(points){
-   if(points == 0){
-       return 0
-   }else{
-       return points +  Math.floor(Math.random(10 - -3) + -3)
 
-   }
-}
 
 
