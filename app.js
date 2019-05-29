@@ -48,7 +48,7 @@ mongoose.connect(process.env.remoteDb,  { useNewUrlParser: true }, function(err,
 })
 //get player data
 //getNewPlayer.makeRequest();
-getLatest.makeRequest();
+//getLatest.makeRequest();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
